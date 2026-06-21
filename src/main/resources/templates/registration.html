@@ -1,10 +1,89 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/main}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/main}">
 
-<div layout:fragment="content">
-    <h2>Coming Soon</h2>
-</div>
+<head>
+	<title>Login</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+
+		<div class="row justify-content-center">
+			<div class="col-md-6 col-lg-5">
+
+				<div class="card shadow-sm">
+					<div class="card-body p-4">
+
+						<h2 class="text-center mb-4">Registration</h2>
+
+						<div class="alert alert-success" th:if="${successMessage}" th:text="${successMessage}">
+						</div>
+
+						<div class="alert alert-danger" th:if="${errorMessage}" th:text="${errorMessage}">
+						</div>
+
+						<form th:action="@{/registration/doRegistration}" th:object="${registrationModel}"
+							method="post">
+
+							<div class="mb-3">
+								<label for="email" class="form-label">Email</label>
+
+								<input type="email" id="email" class="form-control" th:field="*{email}"
+									placeholder="Enter your email">
+
+								<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+									Email Error
+								</div>
+							</div>
+
+							<div class="mb-3">
+								<label for="password" class="form-label">Password</label>
+
+								<input type="password" id="password" class="form-control" th:field="*{password}"
+									placeholder="Enter your password">
+
+								<div class="text-danger" th:if="${#fields.hasErrors('password')}"
+									th:errors="*{password}">
+									Password Error
+								</div>
+							</div>
+							<div class="mb-3">
+							<input type="password"
+							              id="confirmPassword"
+							              class="form-control"
+							              th:field="*{confirmPassword}"
+							              placeholder="Confirm your password">
+
+							       <div class="text-danger"
+							            th:if="${#fields.hasErrors('confirmPassword')}"
+							            th:errors="*{confirmPassword}">
+							       </div>
+							   </div>
+							</br>
+							
+							<div class="d-grid">
+								<button type="submit" class="btn btn-primary">
+									Submit
+								</button>
+							</div>
+
+							<p class="text-center mt-3 mb-0">
+								Already have an account?
+								<a th:href="@{/login}">Login now</a>
+							</p>
+
+						</form>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+</body>
 
 </html>
