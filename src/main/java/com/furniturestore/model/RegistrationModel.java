@@ -16,6 +16,10 @@ public class RegistrationModel
 	@Email(message = "Please enter a valid email address")
 	private String email;
 	
+	@NotBlank(message="Phone Number is a required field")
+	@Size(min=10, max=15, message="Phone number must be between 10 and 15 characters")
+	private String phoneNumber;
+	
 	@NotBlank(message="Password is a required field")
 	@Size(min=1, max=32, message="Password must be between 1 and 32 characters")
 	private String password;
@@ -70,6 +74,11 @@ public class RegistrationModel
 		return email;
 	}
 	
+	/**getter for phoneNumber*/
+	public String getPhoneNumber() {
+	    return phoneNumber;
+	}
+	
 	/**
 	 * Simple getter method that will return the password
 	 * 
@@ -87,6 +96,13 @@ public class RegistrationModel
 	public void setEmail(String email)
 	{
 		this.email = email;
+	}
+	/**
+	 * setter for phone number
+	 * @param phoneNumber
+	 */
+	public void setPhoneNumber(String phoneNumber) {
+	    this.phoneNumber = phoneNumber;
 	}
 	
 	/**

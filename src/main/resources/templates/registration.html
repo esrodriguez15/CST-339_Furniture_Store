@@ -71,6 +71,17 @@
 									Email Error
 								</div>
 							</div>
+							
+							<div class="mb-3">
+								<label for="phoneNumber" class="form-label">Phone Number</label>
+
+								<input type="tel" id="phoneNumber" class="form-control" th:field="*{phoneNumber}"
+									placeholder="Enter your phone number">
+
+								<div class="text-danger" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">
+									Phone Number Error
+								</div>
+							</div>
 
 							<div class="mb-3">
 								<label for="password" class="form-label">Password</label>
