@@ -1,5 +1,7 @@
 package com.furniturestore.service;
 
+import java.util.List;
+
 import com.furniturestore.model.ProductModel;
 
 /**
@@ -14,4 +16,9 @@ public interface ProductService
 	 * @return true when the product is successfully created
 	 */
 	public boolean createProduct(ProductModel product);
+	
+	/**
+	 * Returns all products for display.
+	 */
+	public List<ProductModel> getAllProducts();
 }
