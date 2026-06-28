@@ -37,9 +37,10 @@ public class ProductsController
 	 * @return the products page
 	 */
 	@GetMapping("/products")
-	public String products()
+	public String products(Model model)
 	{
-		return "products";
+	    model.addAttribute("products", productService.getAllProducts());
+	    return "products";
 	}
 
 	/**
