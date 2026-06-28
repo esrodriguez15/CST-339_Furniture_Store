@@ -3,8 +3,75 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/main}">
 
+<body>
+
 <div layout:fragment="content">
-    <h2>Coming Soon</h2>
+
+<div class="container mt-5">
+
+    <!-- Header Row -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2>Products</h2>
+
+        <a th:href="@{/products/create}"
+           class="btn btn-primary">
+            + Create Product
+        </a>
+
+    </div>
+
+    <!-- If no products -->
+    <div th:if="${#lists.isEmpty(products)}"
+         class="alert alert-info">
+        No products available. Create your first product!
+    </div>
+
+    <!-- Product Grid -->
+    <div class="row">
+
+        <div class="col-md-4 mb-4"
+             th:each="product : ${products}">
+
+            <div class="card h-100 shadow-sm">
+
+                <div class="card-body">
+
+                    <h5 class="card-title"
+                        th:text="${product.productName}">
+                        Product Name
+                    </h5>
+
+                    <h6 class="card-subtitle mb-2 text-muted"
+                        th:text="${product.category}">
+                        Category
+                    </h6>
+
+                    <p class="card-text"
+                       th:text="${product.description}">
+                        Description
+                    </p>
+
+                    <p class="fw-bold">
+                        $<span th:text="${product.price}"></span>
+                    </p>
+
+                    <p>
+                        Quantity:
+                        <span th:text="${product.quantity}"></span>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
+</div>
+
+</body>
 </html>
