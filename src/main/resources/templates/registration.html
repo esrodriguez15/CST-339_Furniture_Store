@@ -61,6 +61,22 @@
 							    </div>
 
 							</div>
+							
+							<div class="mb-3">
+							    <label for="phoneNumber" class="form-label">Phone Number</label>
+
+							    <input type="tel"
+							           id="phoneNumber"
+							           class="form-control"
+							           th:field="*{phoneNumber}"
+							           placeholder="(123) 456-7890">
+
+							    <div class="text-danger"
+							         th:if="${#fields.hasErrors('phoneNumber')}"
+							         th:errors="*{phoneNumber}">
+							    </div>
+							</div>
+							
 							<div class="mb-3">
 								<label for="email" class="form-label">Email</label>
 
@@ -69,17 +85,6 @@
 
 								<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
 									Email Error
-								</div>
-							</div>
-							
-							<div class="mb-3">
-								<label for="phoneNumber" class="form-label">Phone Number</label>
-
-								<input type="tel" id="phoneNumber" class="form-control" th:field="*{phoneNumber}"
-									placeholder="Enter your phone number">
-
-								<div class="text-danger" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">
-									Phone Number Error
 								</div>
 							</div>
 
