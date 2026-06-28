@@ -33,7 +33,7 @@ public class RegistrationModel
 	 * 
 	 * @return String with email
 	 */
-	public String getfirstName() {
+	public String getFirstName() {
 		return firstName;
 	}
 	

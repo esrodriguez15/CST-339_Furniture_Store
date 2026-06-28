@@ -1,5 +1,6 @@
 package com.furniturestore.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -7,14 +8,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.furniturestore.model.RegistrationModel;
+import com.furniturestore.service.RegistrationServiceInterface;
 
 import jakarta.validation.Valid;
 
 @Controller
 public class RegistrationController 
 {
+	@Autowired
+	private RegistrationServiceInterface registrationService;
+	
 	@GetMapping("/registration")
-	 public String displayLogin(Model model)
+	 public String displayRegistration(Model model)
     {
         model.addAttribute("registrationModel", new RegistrationModel());
         return "registration";
@@ -26,8 +31,7 @@ public class RegistrationController
 	        BindingResult bindingResult,
 	        Model model)
 	{
-	    if (!registrationModel.getPassword()
-	            .equals(registrationModel.getConfirmPassword()))
+	    if (!registrationService.validateRegistration(registrationModel))
 	    {
 	        bindingResult.rejectValue(
 	                "confirmPassword",
