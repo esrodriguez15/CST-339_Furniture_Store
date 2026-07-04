@@ -40,9 +40,6 @@ public class LoginController
         boolean authenticated = loginService.authenticate(loginModel);
         
 
-        String testEmail = "demo@dea.com";
-        String testPassword = "password123";
-
         if (authenticated)
         {
             model.addAttribute("successMessage", "Login successful.");

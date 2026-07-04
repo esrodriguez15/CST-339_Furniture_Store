@@ -1,19 +1,27 @@
 package com.furniturestore.service;
 
 import org.springframework.stereotype.Service;
+
+import com.furniturestore.data.service.UserDataService;
 import com.furniturestore.model.LoginModel;
 
 @Service
-public class LoginServiceImpl implements LoginServiceInterface {
+public class LoginServiceImpl implements LoginServiceInterface
+{
+	private final UserDataService userDataService;
 
-	@Override
-	public boolean authenticate(LoginModel loginModel) 
+	public LoginServiceImpl(UserDataService userDataService)
 	{
-		//hardwired login info
-		String testEmail = "demo@dea.com";
-		String testPassword = "password123";
-		
-		return loginModel.getEmail().equals(testEmail) && loginModel.getPassword().equals(testPassword);
+		this.userDataService = userDataService;
 	}
 
+	@Override
+	public boolean authenticate(LoginModel loginModel)
+	{
+		return userDataService
+				.findByEmailAndPassword(
+						loginModel.getEmail(),
+						loginModel.getPassword())
+				.isPresent();
+	}
 }
