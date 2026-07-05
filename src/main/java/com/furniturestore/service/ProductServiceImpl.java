@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.furniturestore.data.service.ProductDataService;
 import com.furniturestore.model.ProductModel;
 
 /**
@@ -13,8 +14,15 @@ import com.furniturestore.model.ProductModel;
 @Service
 public class ProductServiceImpl implements ProductService
 {
-	private final List<ProductModel> products = new ArrayList<ProductModel>();
+	//private final List<ProductModel> products = new ArrayList<ProductModel>();
+	//replace arraylist 
+	private final ProductDataService productDataService;
+	
 
+	public ProductServiceImpl(ProductDataService productDataService)
+	{
+		this.productDataService = productDataService;
+	}
 	/**
 	 * Adds a new product to the temporary product list.
 	 *
@@ -24,13 +32,13 @@ public class ProductServiceImpl implements ProductService
 	@Override
 	public boolean createProduct(ProductModel product)
 	{
-		products.add(product);
+		productDataService.save(product);
 		return true;
 	}
 	
 	@Override
 	public List<ProductModel> getAllProducts()
 	{
-	    return products;
+	    return productDataService.findAll();
 	}
 }
