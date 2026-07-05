@@ -4,5 +4,5 @@ import com.furniturestore.model.RegistrationModel;
 
 public interface RegistrationServiceInterface 
 {
-	boolean validateRegistration(RegistrationModel model);
+	boolean registerUser(RegistrationModel model);
 }
