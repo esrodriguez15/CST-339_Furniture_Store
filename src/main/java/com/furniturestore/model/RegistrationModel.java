@@ -21,11 +21,11 @@ public class RegistrationModel
 	private String phoneNumber;
 	
 	@NotBlank(message="Password is a required field")
-	@Size(min=1, max=32, message="Password must be between 1 and 32 characters")
+	@Size(min=6, max=32, message="Password must be between 6 and 32 characters")
 	private String password;
 	
 	@NotBlank(message="Please confirm your password")
-	@Size(min=1, max=32, message="Password must be between 1 and 32 characters")
+	@Size(min=6, max=32, message="Password must be between 6 and 32 characters")
 	private String confirmPassword;
 	
 	/**
