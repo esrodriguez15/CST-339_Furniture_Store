@@ -45,4 +45,9 @@ public class ProductDataService
 				})
 				.collect(Collectors.toList());
 	}
+	
+	public void deleteById(Long id)
+	{
+		productRepository.deleteById(id);
+	}
 }

@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.furniturestore.model.ProductModel;
@@ -83,4 +84,10 @@ public class ProductsController
 
 		return "product-create";
 	}
+	
+	@GetMapping("/products/delete/{id}0")
+	public String deleteProduct(@PathVariable("id") Long id)
+	{
+		productService.deleteProduct(id);
+		return "redirect:/products";	}
 }

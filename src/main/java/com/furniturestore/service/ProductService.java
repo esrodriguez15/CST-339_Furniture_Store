@@ -21,4 +21,11 @@ public interface ProductService
 	 * Returns all products for display.
 	 */
 	public List<ProductModel> getAllProducts();
+	
+	/**
+	 * Deletes product
+	 * 
+	 */
+	public void deleteProduct(Long id);
+	 
 }
