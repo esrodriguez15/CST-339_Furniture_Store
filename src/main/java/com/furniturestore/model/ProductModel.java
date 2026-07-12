@@ -12,6 +12,8 @@ import jakarta.validation.constraints.Size;
  */
 public class ProductModel
 {
+	private Long id;
+	
 	@NotBlank(message = "Product name is required")
 	@Size(max = 100, message = "Product name cannot exceed 100 characters")
 	private String productName;
@@ -31,6 +33,16 @@ public class ProductModel
 	@Min(value = 0, message = "Quantity cannot be negative")
 	private Integer quantity;
 
+	public Long getId() 
+	{
+		return id;
+	}
+	
+	public void setId(Long id)
+	{
+		this.id = id;
+	}
+	
 	/**
 	 * Returns the product name.
 	 *

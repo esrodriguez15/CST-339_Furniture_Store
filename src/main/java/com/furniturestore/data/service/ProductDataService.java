@@ -36,6 +36,7 @@ public class ProductDataService
 				.stream()
 				.map(e -> {
 					ProductModel m = new ProductModel();
+					m.setId(e.getId());
 					m.setProductName(e.getProductName());
 					m.setDescription(e.getDescription());
 					m.setCategory(e.getCategory());
