@@ -85,9 +85,49 @@ public class ProductsController
 		return "product-create";
 	}
 	
+	/**
+	 * Displays the product edit form.
+	 *
+	 * @param id the product ID
+	 * @param model the Spring MVC model
+	 * @return the product edit page
+	 */
+	@GetMapping("/products/edit/{id}")
+	public String displayEditProductForm(@PathVariable Long id, Model model)
+	{
+	    ProductModel product = productService.getProductById(id);
+
+	    model.addAttribute("productModel", product);
+
+	    return "product-edit";
+	}
+
+	/**
+	 * Processes the submitted product edit form.
+	 *
+	 * @param productModel the updated product
+	 * @param bindingResult the validation results
+	 * @return redirects to the products page
+	 */
+	@PostMapping("/products/edit")
+	public String updateProduct(
+	        @Valid @ModelAttribute("productModel") ProductModel productModel,
+	        BindingResult bindingResult)
+	{
+	    if (bindingResult.hasErrors())
+	    {
+	        return "product-edit";
+	    }
+
+	    productService.updateProduct(productModel);
+
+	    return "redirect:/products";
+	}
+	
 	@GetMapping("/products/delete/{id}")
 	public String deleteProduct(@PathVariable Long id)
 	{
 		productService.deleteProduct(id);
-		return "redirect:/products";	}
+		return "redirect:/products";	
+	}
 }

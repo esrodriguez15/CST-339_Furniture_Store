@@ -23,6 +23,22 @@ public interface ProductService
 	public List<ProductModel> getAllProducts();
 	
 	/**
+	 * Gets a product by its ID.
+	 *
+	 * @param id the product ID
+	 * @return the product
+	 */
+	public ProductModel getProductById(Long id);
+
+	/**
+	 * Updates an existing product.
+	 *
+	 * @param product the updated product
+	 * @return true if the update was successful
+	 */
+	public boolean updateProduct(ProductModel product);
+	
+	/**
 	 * Deletes product
 	 * 
 	 */
