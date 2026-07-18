@@ -1,5 +1,6 @@
 package com.furniturestore.service;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.furniturestore.data.entity.UserEntity;
@@ -9,33 +10,39 @@ import com.furniturestore.model.RegistrationModel;
 @Service
 public class RegistrationServiceImpl implements RegistrationServiceInterface
 {
-    private final UserDataService userDataService;
+	private final UserDataService userDataService;
+	private final PasswordEncoder passwordEncoder;
 
-    public RegistrationServiceImpl(UserDataService userDataService)
-    {
-        this.userDataService = userDataService;
-    }
+	public RegistrationServiceImpl(
+			UserDataService userDataService,
+			PasswordEncoder passwordEncoder)
+	{
+		this.userDataService = userDataService;
+		this.passwordEncoder = passwordEncoder;
+	}
 
-    @Override
-    public boolean registerUser(RegistrationModel model)
-    {
-        // Check if email already exists
-        if (userDataService.findByEmail(model.getEmail()).isPresent())
-        {
-            return false;
-        }
+	@Override
+	public boolean registerUser(RegistrationModel model)
+	{
+		// Check if email already exists.
+		if (userDataService.findByEmail(model.getEmail()).isPresent())
+		{
+			return false;
+		}
 
-        // Convert model -> entity
-        UserEntity user = new UserEntity();
-        user.setFirstName(model.getFirstName());
-        user.setLastName(model.getLastName());
-        user.setEmail(model.getEmail());
-        user.setPhoneNumber(model.getPhoneNumber());
-        user.setPassword(model.getPassword());
+		// Convert model to entity.
+		UserEntity user = new UserEntity();
+		user.setFirstName(model.getFirstName());
+		user.setLastName(model.getLastName());
+		user.setEmail(model.getEmail());
+		user.setPhoneNumber(model.getPhoneNumber());
 
-        // Save to DB
-        userDataService.save(user);
+		// Store the encrypted password in the database.
+		user.setPassword(passwordEncoder.encode(model.getPassword()));
 
-        return true;
-    }
+		// Save the user to the database.
+		userDataService.save(user);
+
+		return true;
+	}
 }
