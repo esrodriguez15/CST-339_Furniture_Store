@@ -14,42 +14,42 @@ public class SecurityConfig
 {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http)
-			throws Exception
+	        throws Exception
 	{
-		http
-			.authorizeHttpRequests(authorize -> authorize
-				.requestMatchers(
-						"/login",
-						"/login/doLogin",
-						"/registration",
-						"/css/**",
-						"/js/**",
-						"/images/**")
-				.permitAll()
+	    http
+	        .authorizeHttpRequests(authorize -> authorize
+	            .requestMatchers(
+	                    "/login",
+	                    "/login/doLogin",
+	                    "/registration",
+	                    "/registration/doRegistration",
+	                    "/css/**",
+	                    "/js/**",
+	                    "/images/**")
+	            .permitAll()
 
-				/*
-				 * Damian will change this to authenticated()
-				 * when securing the remaining pages.
-				 */
-				.anyRequest()
-				.permitAll()
-			)
-			.formLogin(form -> form
-				.loginPage("/login")
-				.loginProcessingUrl("/login/doLogin")
-				.usernameParameter("email")
-				.passwordParameter("password")
-				.defaultSuccessUrl("/", true)
-				.failureUrl("/login?error")
-				.permitAll()
-			)
-			.logout(logout -> logout
-				.logoutUrl("/logout")
-				.logoutSuccessUrl("/login?logout")
-				.permitAll()
-			);
+	            // All other pages require authentication
+	            .anyRequest()
+	            .authenticated()
+	        )
+	        .formLogin(form -> form
+	            .loginPage("/login")
+	            .loginProcessingUrl("/login/doLogin")
+	            .usernameParameter("email")
+	            .passwordParameter("password")
+	            .defaultSuccessUrl("/", true)
+	            .failureUrl("/login?error")
+	            .permitAll()
+	        )
+	        .logout(logout -> logout
+	                .logoutUrl("/logout")
+	                .logoutSuccessUrl("/login?logout")
+	                .invalidateHttpSession(true)
+	                .deleteCookies("JSESSIONID")
+	                .permitAll()
+	        );
 
-		return http.build();
+	    return http.build();
 	}
 
 	@Bean
