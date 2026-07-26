@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      	layout:decorate="~{layouts/main}">
+	<head>
+		<title>Products Details</title>
+	</head>
+	<body>
+	<div layout:fragment="content" class="container mt-4">	
+		<h1 th:text="${product.productName}">Product Name</h1>
+		<p><strong>Description:</strong> 
+			<span th:text="${product.description}"></span>
+		</p>
+		<p><strong>Category:</strong> 
+			<span th:text="${product.category}"></span>
+		</p>
+		<p><strong>Price:</strong> 
+			<span th:text="${product.price}"></span>
+		</p>
+		<p><strong>Quantity Available:</strong> 
+			<span th:text="${product.quantity}"></span>
+		</p>
+		
+		<a th:href="@{/products}">Back to Products</a>
+	</div>
+	</body>
+</html>		
+			

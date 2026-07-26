@@ -130,4 +130,19 @@ public class ProductsController
 		productService.deleteProduct(id);
 		return "redirect:/products";	
 	}
+	
+	@GetMapping("/products/view/{id}")
+	public String viewProduct(@PathVariable Long id, Model model)
+	{
+		ProductModel product = productService.getProductById(id);
+		
+		if (product == null)
+		{
+			//return to products page
+			return "redirect:/products";
+		}
+		
+		model.addAttribute("product", product);
+		return "product-view";
+	}
 }

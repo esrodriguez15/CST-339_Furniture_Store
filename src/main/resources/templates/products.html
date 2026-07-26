@@ -56,16 +56,21 @@
                     <p class="fw-bold">
                         $<span th:text="${product.price}"></span>
                     </p>
-
+	
                     <p>
                         Quantity:
                         <span th:text="${product.quantity}"></span>
                     </p>
+					<a th:href="@{'/products/view/' + ${product.id}}"
+						class="btn btn-success">
+						View
+					</a>
+
 					<a th:href="@{/products/edit/{id}(id=${product.id})}"
 					   class="btn btn-warning">
 					    Edit
 					</a>
-
+			
 					<a th:href="@{/products/delete/{id}(id=${product.id})}"
 					   class="btn btn-danger"
 					   onclick="return confirm('Are you sure you want to delete this product?');">
