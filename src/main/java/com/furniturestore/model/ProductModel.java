@@ -33,11 +33,20 @@ public class ProductModel
 	@Min(value = 0, message = "Quantity cannot be negative")
 	private Integer quantity;
 
+	/**
+	 * return ID
+	 * 
+	 * @return
+	 */
 	public Long getId() 
 	{
 		return id;
 	}
 	
+	/**
+	 * Set ID
+	 * @param id
+	 */
 	public void setId(Long id)
 	{
 		this.id = id;

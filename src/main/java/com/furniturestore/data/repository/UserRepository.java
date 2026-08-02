@@ -6,6 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.furniturestore.data.entity.UserEntity;
 
+/**
+ * Extends Spring Data JDBC's CRUD Repository functions
+ */
 public interface UserRepository extends CrudRepository<UserEntity, Long>
 {
 	Optional<UserEntity> findByEmailAndPassword(String email, String password);

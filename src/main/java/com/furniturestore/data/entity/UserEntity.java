@@ -4,9 +4,14 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+/**
+ * Entity class that represents a user. 
+ * Each field corresponds to column in the database.
+ */
 @Table("USERS")
 public class UserEntity
 {
+	
 	@Id
 	private Long id;
 
@@ -25,10 +30,22 @@ public class UserEntity
 	@Column("PASSWORD")
 	private String password;
 
+	/**
+	 * Default constructor
+	 */
 	public UserEntity()
 	{
 	}
 
+	/**
+	 * Constructor used to create user entity
+	 * @param id
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 * @param phoneNumber
+	 * @param password
+	 */
 	public UserEntity(Long id, String firstName, String lastName,
 			String email, String phoneNumber, String password)
 	{
@@ -40,61 +57,116 @@ public class UserEntity
 		this.password = password;
 	}
 
+	/**
+	 * returns user ID
+	 * @return
+	 */
 	public Long getId()
 	{
 		return id;
 	}
 
+	/**
+	 * Sets user ID
+	 * 
+	 * @param id
+	 */
 	public void setId(Long id)
 	{
 		this.id = id;
 	}
 
+	/**
+	 * Returns first name
+	 * 
+	 * @return
+	 */
 	public String getFirstName()
 	{
 		return firstName;
 	}
 
+	/**
+	 * sets first name
+	 * 
+	 * @param firstName
+	 */
 	public void setFirstName(String firstName)
 	{
 		this.firstName = firstName;
 	}
 
+	/**
+	 * returns last name
+	 * 
+	 */
 	public String getLastName()
 	{
 		return lastName;
 	}
 
+	/**
+	 * Sets last name
+	 * 
+	 * @param lastName
+	 */
 	public void setLastName(String lastName)
 	{
 		this.lastName = lastName;
 	}
 
+	/**
+	 * reutnrs user email
+	 * 
+	 * @return
+	 */
 	public String getEmail()
 	{
 		return email;
 	}
 
+	/**
+	 * Sets user email
+	 * @param email
+	 */
 	public void setEmail(String email)
 	{
 		this.email = email;
 	}
 
+	/**
+	 * Returns user phone number
+	 * 
+	 * @return
+	 */
 	public String getPhoneNumber()
 	{
 		return phoneNumber;
 	}
 
+	/**
+	 * Sets user phone number
+	 * 
+	 * @param phoneNumber
+	 */
 	public void setPhoneNumber(String phoneNumber)
 	{
 		this.phoneNumber = phoneNumber;
 	}
 
+	/**
+	 * return password
+	 */
 	public String getPassword()
 	{
 		return password;
 	}
 
+	/**
+	 * set password
+	 * 
+	 * @param password
+	 */
 	public void setPassword(String password)
 	{
 		this.password = password;

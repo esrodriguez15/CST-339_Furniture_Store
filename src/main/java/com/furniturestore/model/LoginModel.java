@@ -14,21 +14,40 @@ public class LoginModel
     @Size(min = 6, max = 32, message = "Password must be between 6 and 32 characters")
     private String password;
 
+    /**
+     * Return email address
+     * 
+     * @return
+     */
     public String getEmail()
     {
         return email;
     }
 
+    /**
+     * Set email
+     * @param email
+     */
     public void setEmail(String email)
     {
         this.email = email;
     }
 
+    /**
+     * Return password
+     * 
+     * @return
+     */
     public String getPassword()
     {
         return password;
     }
 
+    /**
+     * Set password
+     * 
+     * @param password
+     */
     public void setPassword(String password)
     {
         this.password = password;

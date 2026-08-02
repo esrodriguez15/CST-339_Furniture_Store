@@ -10,11 +10,20 @@ import com.furniturestore.data.entity.ProductEntity;
 import com.furniturestore.data.repository.ProductRepository;
 import com.furniturestore.model.ProductModel;
 
+/**
+ * Retrieves product data from the database 
+ * Business logic between REST API controllers and ProductRepository
+ */
 @Service
 public class ProductDataService
 {
 	private final ProductRepository productRepository;
 
+	/**
+	 * Constructor injection that provides the product repository
+	 * 
+	 * @param productRepository
+	 */
 	public ProductDataService(ProductRepository productRepository)
 	{
 		this.productRepository = productRepository;
@@ -32,6 +41,10 @@ public class ProductDataService
 		productRepository.save(entity);
 	}
 
+	/**
+	 * Returns all products form database
+	 * @return
+	 */
 	public List<ProductModel> findAll()
 	{
 		return ((List<ProductEntity>) productRepository.findAll())
@@ -49,6 +62,11 @@ public class ProductDataService
 				.collect(Collectors.toList());
 	}
 
+	/**
+	 * Returns a product by id
+	 * @param id
+	 * @return
+	 */
 	public ProductModel findById(Long id)
 	{
 		Optional<ProductEntity> optionalEntity = productRepository.findById(id);

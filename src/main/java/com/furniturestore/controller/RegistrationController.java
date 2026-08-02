@@ -13,12 +13,20 @@ import com.furniturestore.service.RegistrationServiceInterface;
 
 import jakarta.validation.Valid;
 
+/**
+ * Controller Responsible for user registration
+ */
 @Controller
 public class RegistrationController 
 {
     @Autowired
     private RegistrationServiceInterface registrationService;
 
+    /**
+     * Display registration form
+     * @param model
+     * @return
+     */
     @GetMapping("/registration")
     public String displayRegistration(Model model)
     {
@@ -26,6 +34,14 @@ public class RegistrationController
         return "registration";
     }
 
+    /**
+     * Process the registration form
+     * 
+     * @param registrationModel
+     * @param bindingResult
+     * @param model
+     * @return
+     */
     @PostMapping("/registration/doRegistration")
     public String doRegistration(
             @Valid @ModelAttribute("registrationModel") RegistrationModel registrationModel,

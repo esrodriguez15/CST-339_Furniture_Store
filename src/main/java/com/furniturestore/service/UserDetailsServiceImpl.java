@@ -9,16 +9,29 @@ import org.springframework.stereotype.Service;
 import com.furniturestore.data.entity.UserEntity;
 import com.furniturestore.data.service.UserDataService;
 
+
+/**
+ * Implementation of Spring Security's UserDetailsService
+ * 
+ * Loads user details from database with SPring DataJDBC
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService
 {
 	private final UserDataService userDataService;
 
+	/**
+	 * Provides user repository
+	 * @param userDataService
+	 */
 	public UserDetailsServiceImpl(UserDataService userDataService)
 	{
 		this.userDataService = userDataService;
 	}
 
+	/**
+	 * Loads user by email for authentication
+	 */
 	@Override
 	public UserDetails loadUserByUsername(String email)
 			throws UsernameNotFoundException

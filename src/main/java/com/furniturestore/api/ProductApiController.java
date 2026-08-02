@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.furniturestore.data.service.ProductDataService;
 import com.furniturestore.model.ProductModel;
 
+/**
+ * REST API controller for retrieving all products and individual products 
+ * from database as JSON
+ * 
+ */
 @RestController
 @RequestMapping("/api/products")
 public class ProductApiController 
@@ -22,7 +27,10 @@ public class ProductApiController
 		this.productDataService = productDataService;
 	}
 	
-	//REST API - return all products
+	/**
+	 * REST API - return all products
+	 * @return
+	 */
 	@GetMapping
 	public ResponseEntity<List<ProductModel>> getAllProducts()
 	{
@@ -30,7 +38,9 @@ public class ProductApiController
 		return ResponseEntity.ok(products);
 	}
 	
-	//REST API - return desired product
+	/*
+	 * REST API - return desired product
+	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<ProductModel> getProductById(@PathVariable Long id)
 	{
