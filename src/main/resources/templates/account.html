@@ -3,8 +3,81 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/main}">
 
+<head>
+    <title>My Account</title>
+</head>
+
+<body>
+
 <div layout:fragment="content">
-    <h2>Coming Soon</h2>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+
+                    <h2 class="text-center mb-4">My Account</h2>
+
+                    <div class="alert alert-danger"
+                         th:if="${error}"
+                         th:text="${error}">
+                    </div>
+
+                    <div th:if="${user != null}">
+
+                        <div class="row mb-3">
+
+                            <div class="col">
+                                <label class="form-label">First Name</label>
+                                <input type="text"
+                                       class="form-control"
+                                       th:value="${user.firstName}"
+                                       readonly>
+                            </div>
+
+                            <div class="col">
+                                <label class="form-label">Last Name</label>
+                                <input type="text"
+                                       class="form-control"
+                                       th:value="${user.lastName}"
+                                       readonly>
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Phone Number</label>
+                            <input type="text"
+                                   class="form-control"
+                                   th:value="${user.phoneNumber}"
+                                   readonly>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Email</label>
+                            <input type="email"
+                                   class="form-control"
+                                   th:value="${user.email}"
+                                   readonly>
+                        </div>
+
+						<form th:action="@{/logout}" method="post">
+						    <div class="d-grid">
+						        <button type="submit" class="btn btn-danger">
+						            Logout
+						        </button>
+						    </div>
+						</form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>
 
+</body>
 </html>
