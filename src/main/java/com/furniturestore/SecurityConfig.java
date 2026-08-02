@@ -13,24 +13,35 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.furniturestore.service.UserDetailsServiceImpl;
+
 /**
  * Security configuration for DEA Furniture Store application
  * 
  * This class defines all authentication rules with Spring Security and SPring Boot. 
  * Form-based login, Basic HTTP Authentication for REST API endpoitns, 
  * and bCryptEncoding for password encryption
+=======
+
+/**
+ * Configures authentication, page security, REST API security,
+ * form login, HTTP Basic authentication, and logout behavior.
+>>>>>>> ebd241d669a4580cb724fa01bee8106c1f180e00
  */
 @Configuration
 @EnableWebSecurity
 @ComponentScan("com.furniturestore")
 public class SecurityConfig
 {
+	/**
+	 * Loads user account information from the database for authentication.
+	 */
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
 	
 	/**
-	 * Provides BCrypt password encoder to encrypt passwords
-	 * @return
+	 * Creates the password encoder used to encrypt and verify passwords.
+	 *
+	 * @return the BCrypt password encoder
 	 */
 	@Bean
 	public PasswordEncoder passwordEncoder()
@@ -39,10 +50,18 @@ public class SecurityConfig
 	}
 	
 	/**
+<<<<<<< HEAD
 	 * Authentication manager used by Spring Security
 	 * @param config
 	 * @return
 	 * @throws Exception
+=======
+	 * Creates the authentication manager used by Spring Security.
+	 *
+	 * @param config the Spring authentication configuration
+	 * @return the configured authentication manager
+	 * @throws Exception if the authentication manager cannot be created
+>>>>>>> ebd241d669a4580cb724fa01bee8106c1f180e00
 	 */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
@@ -50,10 +69,12 @@ public class SecurityConfig
     }
 	
     /**
-     * Security filter chain for handling Http security
-     * @param http
-     * @return
-     * @throws Exception
+     * Defines access rules for web pages and REST APIs and configures
+     * form login, HTTP Basic authentication, and logout.
+     *
+     * @param http the HTTP security configuration
+     * @return the configured security filter chain
+     * @throws Exception if the security configuration cannot be created
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)

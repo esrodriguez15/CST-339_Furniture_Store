@@ -34,9 +34,15 @@ public class ProductModel
 	private Integer quantity;
 
 	/**
+<<<<<<< HEAD
 	 * return ID
 	 * 
 	 * @return
+=======
+	 * Returns the product identifier.
+	 *
+	 * @return the product identifier
+>>>>>>> ebd241d669a4580cb724fa01bee8106c1f180e00
 	 */
 	public Long getId() 
 	{
@@ -44,8 +50,14 @@ public class ProductModel
 	}
 	
 	/**
+<<<<<<< HEAD
 	 * Set ID
 	 * @param id
+=======
+	 * Sets the product identifier.
+	 *
+	 * @param id the product identifier to set
+>>>>>>> ebd241d669a4580cb724fa01bee8106c1f180e00
 	 */
 	public void setId(Long id)
 	{

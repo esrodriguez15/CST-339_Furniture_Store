@@ -5,8 +5,12 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 /**
+<<<<<<< HEAD
  * Entity class that represents a user. 
  * Each field corresponds to column in the database.
+=======
+ * Represents a user account stored in the USERS database table.
+>>>>>>> ebd241d669a4580cb724fa01bee8106c1f180e00
  */
 @Table("USERS")
 public class UserEntity
@@ -31,13 +35,18 @@ public class UserEntity
 	private String password;
 
 	/**
+<<<<<<< HEAD
 	 * Default constructor
+=======
+	 * Creates an empty user entity.
+>>>>>>> ebd241d669a4580cb724fa01bee8106c1f180e00
 	 */
 	public UserEntity()
 	{
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Constructor used to create user entity
 	 * @param id
 	 * @param firstName
@@ -45,6 +54,16 @@ public class UserEntity
 	 * @param email
 	 * @param phoneNumber
 	 * @param password
+=======
+	 * Creates a user entity with account information.
+	 *
+	 * @param id the user identifier
+	 * @param firstName the user's first name
+	 * @param lastName the user's last name
+	 * @param email the user's email address
+	 * @param phoneNumber the user's phone number
+	 * @param password the user's encrypted password
+>>>>>>> ebd241d669a4580cb724fa01bee8106c1f180e00
 	 */
 	public UserEntity(Long id, String firstName, String lastName,
 			String email, String phoneNumber, String password)
