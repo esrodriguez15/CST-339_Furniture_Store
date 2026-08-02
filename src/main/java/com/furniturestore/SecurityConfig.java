@@ -14,25 +14,52 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import com.furniturestore.service.UserDetailsServiceImpl;
 
+/**
+ * Configures authentication, page security, REST API security,
+ * form login, HTTP Basic authentication, and logout behavior.
+ */
 @Configuration
 @EnableWebSecurity
 @ComponentScan("com.furniturestore")
 public class SecurityConfig
 {
+	/**
+	 * Loads user account information from the database for authentication.
+	 */
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
 	
+	/**
+	 * Creates the password encoder used to encrypt and verify passwords.
+	 *
+	 * @return the BCrypt password encoder
+	 */
 	@Bean
 	public PasswordEncoder passwordEncoder()
 	{
 		return new BCryptPasswordEncoder();
 	}
 	
+	/**
+	 * Creates the authentication manager used by Spring Security.
+	 *
+	 * @param config the Spring authentication configuration
+	 * @return the configured authentication manager
+	 * @throws Exception if the authentication manager cannot be created
+	 */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
 	
+    /**
+     * Defines access rules for web pages and REST APIs and configures
+     * form login, HTTP Basic authentication, and logout.
+     *
+     * @param http the HTTP security configuration
+     * @return the configured security filter chain
+     * @throws Exception if the security configuration cannot be created
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)
             throws Exception

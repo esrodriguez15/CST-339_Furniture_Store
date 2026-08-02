@@ -19,6 +19,8 @@ public interface ProductService
 	
 	/**
 	 * Returns all products for display.
+	 *
+	 * @return a list containing all products
 	 */
 	public List<ProductModel> getAllProducts();
 	
@@ -39,8 +41,9 @@ public interface ProductService
 	public boolean updateProduct(ProductModel product);
 	
 	/**
-	 * Deletes product
-	 * 
+	 * Deletes a product by its identifier.
+	 *
+	 * @param id the identifier of the product to delete
 	 */
 	public void deleteProduct(Long id);
 	 
