@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import com.furniturestore.data.entity.UserEntity;
 import com.furniturestore.data.service.UserDataService;
 
+/**
+ * Loads user information from the database for Spring Security authentication.
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService
 {
@@ -19,6 +22,13 @@ public class UserDetailsServiceImpl implements UserDetailsService
 		this.userDataService = userDataService;
 	}
 
+	/**
+	 * Loads a user account by email for authentication.
+	 *
+	 * @param email the email entered during login
+	 * @return the authenticated user's security details
+	 * @throws UsernameNotFoundException if no user has the provided email
+	 */
 	@Override
 	public UserDetails loadUserByUsername(String email)
 			throws UsernameNotFoundException

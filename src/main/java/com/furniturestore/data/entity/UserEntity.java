@@ -4,6 +4,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+/**
+ * Represents a user account stored in the USERS database table.
+ */
 @Table("USERS")
 public class UserEntity
 {
@@ -25,10 +28,23 @@ public class UserEntity
 	@Column("PASSWORD")
 	private String password;
 
+	/**
+	 * Creates an empty user entity.
+	 */
 	public UserEntity()
 	{
 	}
 
+	/**
+	 * Creates a user entity with account information.
+	 *
+	 * @param id the user identifier
+	 * @param firstName the user's first name
+	 * @param lastName the user's last name
+	 * @param email the user's email address
+	 * @param phoneNumber the user's phone number
+	 * @param password the user's encrypted password
+	 */
 	public UserEntity(Long id, String firstName, String lastName,
 			String email, String phoneNumber, String password)
 	{

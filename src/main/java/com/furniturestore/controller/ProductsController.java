@@ -14,8 +14,7 @@ import com.furniturestore.service.ProductService;
 import jakarta.validation.Valid;
 
 /**
- * Controller used to display products and process
- * the product creation form.
+ * Handles displaying, creating, updating, deleting, and viewing products.
  */
 @Controller
 public class ProductsController
@@ -35,6 +34,7 @@ public class ProductsController
 	/**
 	 * Displays the customer product page.
 	 *
+	 * @param model the Spring MVC model
 	 * @return the products page
 	 */
 	@GetMapping("/products")
@@ -124,6 +124,12 @@ public class ProductsController
 	    return "redirect:/products";
 	}
 	
+	/**
+	 * Deletes a product and redirects to the products page.
+	 *
+	 * @param id the identifier of the product to delete
+	 * @return a redirect to the products page
+	 */
 	@GetMapping("/products/delete/{id}")
 	public String deleteProduct(@PathVariable Long id)
 	{
@@ -131,6 +137,13 @@ public class ProductsController
 		return "redirect:/products";	
 	}
 	
+	/**
+	 * Displays the details of a selected product.
+	 *
+	 * @param id the identifier of the product to display
+	 * @param model the Spring MVC model
+	 * @return the product details page, or a redirect if the product is not found
+	 */
 	@GetMapping("/products/view/{id}")
 	public String viewProduct(@PathVariable Long id, Model model)
 	{
@@ -138,7 +151,7 @@ public class ProductsController
 		
 		if (product == null)
 		{
-			//return to products page
+			// Return to the products page if the product is not found.
 			return "redirect:/products";
 		}
 		

@@ -33,11 +33,21 @@ public class ProductModel
 	@Min(value = 0, message = "Quantity cannot be negative")
 	private Integer quantity;
 
+	/**
+	 * Returns the product identifier.
+	 *
+	 * @return the product identifier
+	 */
 	public Long getId() 
 	{
 		return id;
 	}
 	
+	/**
+	 * Sets the product identifier.
+	 *
+	 * @param id the product identifier to set
+	 */
 	public void setId(Long id)
 	{
 		this.id = id;
